@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .balloons {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: riseUp 5s infinite linear;
+        }
+        @keyframes riseUp {
+            from {
+                top: 100%;
+            }
+            to {
+                top: -10%;
+            }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+    </audio>
+    <div class="container">
+        <h1>Happy Birthday! 🎂🎉</h1>
+        <div class="card" onclick="window.location.href='index.html'">
+            <p>Semoga hari ini penuh kebahagiaan dan kejutan indah! 🎁</p>
+        </div>
+    </div>
+    
+    <div class="balloons">🎈🎈🎈</div>
+
+    <script>
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(confetti);
+            }
+        }
+        createConfetti();
+    </script>
+</body>
+</html>
